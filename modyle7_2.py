@@ -38,11 +38,12 @@
 # Помните, что при использовании символов не принадлежащих таблице ASCII, вы используете больше байт для записи символа.
 # Соответственно для чтения и записи информации из/в файл(-f) потребуется другая кодировка - utf-8.
 
+import io
 
 def custom_write(file_name: str, strings: list):
     strings_positions = {}
     line_number = 1
-    file = open(file_name, 'w')
+    file = open(file_name, 'w', encoding= "utf-8")
     for string in strings:
         line_byte = file.tell()
         file.write(f'{string}\n')
@@ -58,7 +59,8 @@ if __name__ == '__main__':
         'Используйте кодировку utf-8.',
         'Because there are 2 languages!',
         'Спасибо!'
-    ]
+        ]
     result = custom_write('test.txt', info)
     for elem in result.items():
-        print(elem)
+      print(elem)
+
